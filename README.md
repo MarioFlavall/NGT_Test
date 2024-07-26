@@ -3,7 +3,8 @@
 
 This project contains:
 
-api.py - This is the file for the REST API used to interact with the data extracted from the files (AAPL.csv, FB.csv)
+api.py - This is the file for the REST API used to interact with the data extracted from the files (AAPL.csv, FB.csv). 
+This was running on my local machine via "python api.py" as I had not yet had time to set up the Cloud Run and make it production ready rather than the debug dev setup.
 
 cloud_function.py - This is the file containing the code that I was using in the UI editor for the Google Cloud cloud_function
 
