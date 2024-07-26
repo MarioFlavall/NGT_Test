@@ -59,7 +59,7 @@ def login():
     return jsonify(access_token=access_token)
 
 @app.route('/ticker_data/<int:ticker_data_id>', methods=['PUT'])
-# @jwt_required()
+@jwt_required()
 def update_ticker_data(ticker_data_id):
     data = request.get_json()
     ticker_data = TickerData.query.get_or_404(ticker_data_id)
@@ -69,7 +69,7 @@ def update_ticker_data(ticker_data_id):
     db.session.commit()
     return jsonify({'message': 'Ticker data updated'})
 @app.route('/tickers', methods=['GET'])
-# @jwt_required()
+@jwt_required()
 def get_tickers():
     """Returns a list of unique ticker symbols"""
     tickers = TickerData.query.distinct(TickerData.ticker)
@@ -77,7 +77,7 @@ def get_tickers():
     return jsonify([ticker.ticker for ticker in tickers])
 
 @app.route('/tickers/<string:ticker>', methods=['GET'])
-# @jwt_required()
+@jwt_required()
 def get_ticker_data(ticker):
     "Returns a list of ticker data for the specified ticker"
     ticker_data = TickerData.query.filter_by(ticker=ticker).all()
@@ -85,7 +85,7 @@ def get_ticker_data(ticker):
 
 
 @app.route('/ticker_data/<int:ticker_data_id>', methods=['DELETE'])
-# @jwt_required()
+@jwt_required()
 def delete_item(ticker_data_id):
     ticker_data = TickerData.query.get_or_404(ticker_data_id)
     db.session.delete(ticker_data)
